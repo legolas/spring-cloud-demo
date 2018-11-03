@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DeductionApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DeductionApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DeductionApplication.class, args);
+    }
 }
