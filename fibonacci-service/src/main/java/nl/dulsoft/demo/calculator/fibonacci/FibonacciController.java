@@ -1,6 +1,5 @@
 package nl.dulsoft.demo.calculator.fibonacci;
 
-import nl.dulsoft.demo.calculator.FibonacciApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +15,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class FibonacciService {
+public class FibonacciController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FibonacciService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FibonacciController.class);
 
     private RestTemplate restTemplate;
 
@@ -26,7 +25,7 @@ public class FibonacciService {
     String additionServiceUrl;
 
     @Autowired
-    public FibonacciService(RestTemplate restTemplate) {
+    public FibonacciController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
@@ -52,6 +51,8 @@ public class FibonacciService {
         String uri = String.format("%s/%d/%d", additionServiceUrl, left, right);
 
         LOGGER.info("Calling add service at: {}", uri);
-        return restTemplate.getForObject(uri, Integer.class);
+        Integer result = restTemplate.getForObject(uri, Integer.class);
+
+        return result;
     }
 }
