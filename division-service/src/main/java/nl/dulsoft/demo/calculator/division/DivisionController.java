@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class DivisionService {
+public class DivisionController {
 
     @RequestMapping(value = "/{left}/{right}")
     public Integer add(@PathVariable(name = "left") Integer left,
                        @PathVariable(name = "right") Integer right) {
+        if (right == 0) {
+            throw new DivisionByZeroException();
+        }
         return left / right;
     }
 }

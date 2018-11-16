@@ -13,9 +13,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class AdditionService {
+public class AdditionController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AdditionService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdditionController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public Link describe() {

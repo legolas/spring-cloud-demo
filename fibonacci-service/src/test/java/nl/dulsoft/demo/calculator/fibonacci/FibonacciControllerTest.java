@@ -10,10 +10,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.io.UnsupportedEncodingException;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -25,10 +26,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @SpringBootTest
 public class FibonacciControllerTest {
 
+    private MockMvc mockMvc;
     @Autowired
     private WebApplicationContext webApplicationContext;
-    MockMvc mockMvc;
-
     @MockBean
     private RestTemplate restTemplate;
 
@@ -39,22 +39,21 @@ public class FibonacciControllerTest {
     private String baseUrl;
 
     @Before
-    public void initialize() {
+    public void initialise() {
         mockMvc = standaloneSetup(this.fibonacciController).build();
 
-        when(restTemplate.getForObject(baseUrl+"/1/0", Integer.class)).thenReturn(1);
-        when(restTemplate.getForObject(baseUrl+"/1/1", Integer.class)).thenReturn(2);
-        when(restTemplate.getForObject(baseUrl+"/2/1", Integer.class)).thenReturn(3);
-        when(restTemplate.getForObject(baseUrl+"/3/2", Integer.class)).thenReturn(5);
-        when(restTemplate.getForObject(baseUrl+"/5/3", Integer.class)).thenReturn(8);
+        when(restTemplate.getForObject(baseUrl + "/1/0", Integer.class)).thenReturn(1);
+        when(restTemplate.getForObject(baseUrl + "/1/1", Integer.class)).thenReturn(2);
+        when(restTemplate.getForObject(baseUrl + "/2/1", Integer.class)).thenReturn(3);
+        when(restTemplate.getForObject(baseUrl + "/3/2", Integer.class)).thenReturn(5);
+        when(restTemplate.getForObject(baseUrl + "/5/3", Integer.class)).thenReturn(8);
     }
 
     @Test
     public void itShouldCalculateFibonacciFor5() throws Exception {
-        mockMvc.perform(get("/5")
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/5").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
-                .andExpect(System.out::println);
+                .andExpect(result -> expectToEqual(result, "5"));
     }
 
     @Test
@@ -62,7 +61,11 @@ public class FibonacciControllerTest {
         mockMvc.perform(get("/0")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(System.out::println);
+                .andExpect(result -> expectToEqual( result, "0"));
+    }
+
+    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
+        assertEquals(expected, result.getResponse().getContentAsString());
     }
 
     @Test
@@ -70,6 +73,6 @@ public class FibonacciControllerTest {
         mockMvc.perform(get("/-1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(System.out::println);
+                .andExpect(result -> expectToEqual(result, "0"));
     }
 }
