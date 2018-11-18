@@ -1,4 +1,4 @@
-package nl.dulsoft.demo.calculator.addition;
+package nl.dulsoft.demo.calculator.multiplication;
 
 import org.junit.Before;
 import org.junit.Test;
