@@ -13,7 +13,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.io.UnsupportedEncodingException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
@@ -40,6 +40,10 @@ public class MultiplyServiceTest {
                 .andExpect(result -> expectToEqual(result, "36"));
     }
 
+    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
+        assertEquals(expected, result.getResponse().getContentAsString());
+    }
+
     @Test
     public void itShouldMultiplyPositiveWithNegativeValues() throws Exception {
         mockMvc.perform(get("/6/-6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
@@ -52,9 +56,5 @@ public class MultiplyServiceTest {
         mockMvc.perform(get("/6/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "0"));
-    }
-
-    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
-        assertEquals(expected, result.getResponse().getContentAsString());
     }
 }

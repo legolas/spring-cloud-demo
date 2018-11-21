@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -41,14 +40,14 @@ public class DeductionControllerTest {
                 .andExpect(result -> expectToEqual(result, "6"));
     }
 
+    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
+        assertEquals(expected, result.getResponse().getContentAsString());
+    }
+
     @Test
     public void itShouldDeductTwoValuesWithOneNegative() throws Exception {
         mockMvc.perform(get("/9/-3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "12"));
-    }
-
-    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
-        assertEquals(expected, result.getResponse().getContentAsString());
     }
 }

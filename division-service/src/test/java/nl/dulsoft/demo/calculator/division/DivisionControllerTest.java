@@ -40,13 +40,13 @@ public class DivisionControllerTest {
                 .andExpect(result -> expectToEqual(result, "4"));
     }
 
+    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
+        assertEquals(expected, result.getResponse().getContentAsString());
+    }
+
     @Test
     public void itShouldReturnThrowBadRequestForDivisionByZero() throws Exception {
         mockMvc.perform(get("/12/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isBadRequest());
-    }
-
-    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
-        assertEquals(expected, result.getResponse().getContentAsString());
     }
 }

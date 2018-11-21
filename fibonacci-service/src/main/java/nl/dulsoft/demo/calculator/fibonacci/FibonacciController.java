@@ -18,11 +18,9 @@ import java.util.Optional;
 public class FibonacciController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FibonacciController.class);
-
-    private RestTemplate restTemplate;
-
     @Value("${addition-service-url}")
     String additionServiceUrl;
+    private RestTemplate restTemplate;
 
     @Autowired
     public FibonacciController(RestTemplate restTemplate) {

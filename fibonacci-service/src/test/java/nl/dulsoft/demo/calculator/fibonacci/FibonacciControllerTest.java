@@ -56,16 +56,16 @@ public class FibonacciControllerTest {
                 .andExpect(result -> expectToEqual(result, "5"));
     }
 
+    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
+        assertEquals(expected, result.getResponse().getContentAsString());
+    }
+
     @Test
     public void itShouldReturn0For0() throws Exception {
         mockMvc.perform(get("/0")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(result -> expectToEqual( result, "0"));
-    }
-
-    private void expectToEqual(MvcResult result, String expected) throws UnsupportedEncodingException {
-        assertEquals(expected, result.getResponse().getContentAsString());
+                .andExpect(result -> expectToEqual(result, "0"));
     }
 
     @Test
