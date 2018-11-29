@@ -27,11 +27,12 @@
 
     <modules>
         <module>addition-service</module>
+        <module>admin-server</module>
+        <module>configuration-service</module>
         <module>deduction-service</module>
         <module>division-service</module>
-        <module>multiplication-service</module>
         <module>fibonacci-service</module>
-        <module>configuration-service</module>
+        <module>multiplication-service</module>
     </modules>
 
     <build>
@@ -59,7 +60,6 @@
                 <version>2.18.3</version>
                 <scope>test</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-config</artifactId>

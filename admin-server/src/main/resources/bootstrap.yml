@@ -1,10 +1,10 @@
 # Port setting
 server:
-  port: 8085
+  port: 9000
 
 spring:
   application:
-    name: addition-service
+    name: admin-server
   cloud:
     config:
       uri: http://localhost:8888

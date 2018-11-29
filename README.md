@@ -22,9 +22,6 @@ The latter delegates part of its implementation to the Addition service.
 
 ## Phase 2: Introducing the [Configuration service](https://cloud.spring.io/spring-cloud-config/)
 
-
-This starter project ...
-
 ### Steps for the configuration service
 * Using [Spring Initializr](), with the options `Config Server` and `Actuator` enabled, to generate a starter project.
 * Rename the generated `application.properties` to `bootstrap.yml`.
@@ -58,6 +55,14 @@ server.port: <component port number>
 ```
 
 ## Phase 3: Add monitoring
+
+See [Spring Boot Admin on github](https://github.com/codecentric/spring-boot-admin)
+and this descriptive tutorial on [Vojtech Ruzicka's Programming Blog](https://www.vojtechruzicka.com/spring-boot-admin/).
+There's also a somewhat outdated instruction written on [Eugen Baeldung](https://www.baeldung.com/spring-boot-admin)'s website.
+
+The Spring Boot Admin Application consists of a server component and a client component.
+First we will setup the server component and add it to calculator suite.
+
 
 ## Phase 4: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
 
