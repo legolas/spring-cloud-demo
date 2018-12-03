@@ -5,6 +5,12 @@ server:
 spring:
   application:
     name: division-service
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000
+
   cloud:
     config:
       uri: http://localhost:8888

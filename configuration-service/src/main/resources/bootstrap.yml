@@ -10,6 +10,13 @@ spring:
 #          uri: github.com:legolas/spring-cloud-demo-config.git
           uri: file://home/marcel/projects/prive/spring-cloud-demo/spring-cloud-demo-config
           clone-on-start: true
+  application:
+    name: configuration-service
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000
 
 logging:
   level:
