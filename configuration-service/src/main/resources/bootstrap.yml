@@ -22,4 +22,4 @@ logging:
   level:
     org:
       springframework:
-        web: debug
+        web: info

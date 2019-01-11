@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,8 @@ import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RefreshScope
+@RequestMapping(value = "/fibonacci", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class FibonacciController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FibonacciController.class);

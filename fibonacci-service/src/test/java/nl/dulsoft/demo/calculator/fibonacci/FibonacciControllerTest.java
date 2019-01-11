@@ -51,7 +51,7 @@ public class FibonacciControllerTest {
 
     @Test
     public void itShouldCalculateFibonacciFor5() throws Exception {
-        mockMvc.perform(get("/5").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/fibonacci/5").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "5"));
     }
@@ -62,7 +62,7 @@ public class FibonacciControllerTest {
 
     @Test
     public void itShouldReturn0For0() throws Exception {
-        mockMvc.perform(get("/0")
+        mockMvc.perform(get("/fibonacci/0")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "0"));
@@ -70,7 +70,7 @@ public class FibonacciControllerTest {
 
     @Test
     public void itShouldReturn0ForLessThan0() throws Exception {
-        mockMvc.perform(get("/-1")
+        mockMvc.perform(get("/fibonacci/-1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "0"));

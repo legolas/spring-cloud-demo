@@ -5,11 +5,6 @@ server:
 spring:
   application:
     name: addition-service
-  cloud:
-    config:
-      uri: http://localhost:8888
-
-  boot:
-    admin:
-      client:
-        url: http://localhost:9000
+#  cloud:
+#    config:
+#      uri: http://localhost:8888

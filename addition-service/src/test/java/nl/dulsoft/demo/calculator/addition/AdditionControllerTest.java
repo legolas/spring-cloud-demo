@@ -1,4 +1,4 @@
-package nl.dulsoft.demo.calculator.multiplication;
+package nl.dulsoft.demo.calculator.addition;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class AdditionControllerTest {
 
     @Test
     public void itShouldAdd2Values3() throws Exception {
-        mockMvc.perform(get("/3/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/add/3/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "6"));
     }
@@ -51,14 +51,14 @@ public class AdditionControllerTest {
 
     @Test
     public void itShouldAddValues0And6() throws Exception {
-        mockMvc.perform(get("/0/6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/add/0/6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "6"));
     }
 
     @Test
     public void itShouldAddValues9AndNegative3() throws Exception {
-        mockMvc.perform(get("/9/-3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/add/9/-3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "6"));
     }

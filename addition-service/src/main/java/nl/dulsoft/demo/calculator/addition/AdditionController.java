@@ -1,7 +1,8 @@
-package nl.dulsoft.demo.calculator.multiplication;
+package nl.dulsoft.demo.calculator.addition;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.hateoas.Link;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
-@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RefreshScope
+@RequestMapping(value = "/add", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class AdditionController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdditionController.class);
