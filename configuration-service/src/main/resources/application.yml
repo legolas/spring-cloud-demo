@@ -1,0 +1,24 @@
+# The default port the config server listens to is 8888
+server:
+  port: 8888
+# The configuration repository address
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/legolas/spring-cloud-demo-config.git
+          clone-on-start: true
+  application:
+    name: configuration-service
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000
+
+logging:
+  level:
+    org:
+      springframework:
+        web: info
