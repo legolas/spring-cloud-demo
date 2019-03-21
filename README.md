@@ -41,7 +41,7 @@ spring:
 ### Steps for the configuration clients
 * Add the following dependencies to the pom for each component:
   * org.springframework.boot:spring-boot-starter-actuator
-  * org.springframework.cloud</groupId:spring-cloud-config-server
+  * org.springframework.cloud:spring-cloud-config-client
 * Rename the `application.properties` to `bootstrap.yml`
 * Add the following to each components `bootstrap.yml`:
 ```
@@ -53,7 +53,21 @@ spring:
       url: <url to the running config server>
 server.port: <component port number>
 ```
-
+* Create another config file named `application.yml`, needed to expose the refresh endpoint, with the content: 
+```
+# Expose the management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+```
+* Add the `@RefreshScope` for each controller with configuration properties that need to change dynamically:
+```
+@RefreshScope
+@RestController
+@RequestMapping(value = "/fibonacci", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+``` 
 ## Phase 3: Add monitoring
 
 See [Spring Boot Admin on github](https://github.com/codecentric/spring-boot-admin)
