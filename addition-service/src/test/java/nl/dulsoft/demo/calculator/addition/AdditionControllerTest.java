@@ -27,8 +27,6 @@ public class AdditionControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private WebApplicationContext wac;
-    @MockBean
-    private BuildProperties buildPropertiesMock;
 
     @Autowired
     private AdditionController additionControllerUnderTest;
