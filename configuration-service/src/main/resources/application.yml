@@ -11,12 +11,10 @@ spring:
           clone-on-start: true
   application:
     name: configuration-service
-
   boot:
     admin:
       client:
         url: http://localhost:9000
-
 logging:
   level:
     org:

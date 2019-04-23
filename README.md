@@ -75,9 +75,23 @@ and this descriptive tutorial on [Vojtech Ruzicka's Programming Blog](https://ww
 There's also a somewhat outdated instruction written on [Eugen Baeldung](https://www.baeldung.com/spring-boot-admin)'s website.
 
 The Spring Boot Admin Application consists of a server component and a client component.
-First we will setup the server component and add it to calculator suite.
+First we will setup the server component and add it to calculator suite:
+* Create a new Spring Boot project named AdminServer;
+* Open the generated `AdminServerApplication` class and add the annotation `@EnableAdminServer` at class level.
+That's it for the admin server.
 
+Make the following changes on each client that needs to be monitored:
+* Add the dependency to the pom:
+```
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-client</artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
+* Define the URL where the admin server is running to the bootstrap.yml `spring.boot.admin.client.url=http://localhost:8080`.
 
+ 
 ## Phase 4: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
 
 ## Phase 5:
