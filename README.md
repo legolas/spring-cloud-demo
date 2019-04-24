@@ -91,7 +91,8 @@ Make the following changes on each client that needs to be monitored:
 ```
 * Define the URL where the admin server is running to the bootstrap.yml `spring.boot.admin.client.url=http://localhost:8080`.
 
+## Phase 4: Using 
  
-## Phase 4: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
+## Phase 5: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
 
-## Phase 5:
+## Phase 6:
