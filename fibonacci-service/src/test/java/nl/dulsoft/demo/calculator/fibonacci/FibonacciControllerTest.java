@@ -31,6 +31,8 @@ public class FibonacciControllerTest {
     private WebApplicationContext webApplicationContext;
     @MockBean
     private RestTemplate restTemplate;
+    @MockBean
+    private AdditionServiceProxy additionServiceProxyMock;
 
     @Autowired
     private FibonacciController fibonacciController;
@@ -42,11 +44,11 @@ public class FibonacciControllerTest {
     public void initialise() {
         mockMvc = standaloneSetup(this.fibonacciController).build();
 
-        when(restTemplate.getForObject(baseUrl + "/1/0", Integer.class)).thenReturn(1);
-        when(restTemplate.getForObject(baseUrl + "/1/1", Integer.class)).thenReturn(2);
-        when(restTemplate.getForObject(baseUrl + "/2/1", Integer.class)).thenReturn(3);
-        when(restTemplate.getForObject(baseUrl + "/3/2", Integer.class)).thenReturn(5);
-        when(restTemplate.getForObject(baseUrl + "/5/3", Integer.class)).thenReturn(8);
+        when(additionServiceProxyMock.add(1, 0)).thenReturn(1);
+        when(additionServiceProxyMock.add(1, 1)).thenReturn(2);
+        when(additionServiceProxyMock.add(2,1)).thenReturn(3);
+        when(additionServiceProxyMock.add(3,2)).thenReturn(5);
+        when(additionServiceProxyMock.add(5,3)).thenReturn(8);
     }
 
     @Test

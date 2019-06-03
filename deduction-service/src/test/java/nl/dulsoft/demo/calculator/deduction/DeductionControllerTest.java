@@ -29,7 +29,7 @@ public class DeductionControllerTest {
     private DeductionController deductionControllerUnderTest;
 
     @Before
-    public void initialise() throws Exception {
+    public void initialise() {
         mockMvc = standaloneSetup(this.deductionControllerUnderTest).build();
     }
 

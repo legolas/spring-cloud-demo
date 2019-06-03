@@ -91,7 +91,31 @@ Make the following changes on each client that needs to be monitored:
 ```
 * Define the URL where the admin server is running to the bootstrap.yml `spring.boot.admin.client.url=http://localhost:8080`.
 
- 
-## Phase 4: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
+## Phase 4: Using OpenFeign client
+Feign is a library created by Netlix and donated to spring-cloud. Feign provides an abstraction over REST service calls.
+With Spring Cloud Feign developers only need to write an interface to describing the client interface, while Spring CLoud Feign dynamically provisions the implementation at runtime.
 
-## Phase 5:
+This demo only has a single inter service communication between the `FibonacciService` and the `AdditionService`.
+
+Make the following changes:
+* Add these entries to pom:
+```
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+```
+* Define the [interface](fibonacci-service/src/main/java/nl/dulsoft/demo/calculator/fibonacci/AdditionServiceProxy.java)
+* Add the `@EnableFeignClients` annotation to the [application class](fibonacci-service/src/main/java/nl/dulsoft/demo/calculator/FibonacciApplication.java).
+* Use the feign client instead of the RestTemplate:
+```java
+    @Autowired
+    public FibonacciController(AdditionServiceProxy additionService) {
+        this.additionService = additionService;
+    }
+    ...
+        int nextValue = additionService.add(val, prev);
+```
+## Phase 5: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
+
+## Phase 6:
