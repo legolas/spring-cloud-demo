@@ -1,0 +1,7 @@
+# Expose the management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+

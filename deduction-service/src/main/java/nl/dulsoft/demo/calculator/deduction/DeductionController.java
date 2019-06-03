@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/deduct", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class DeductionController {
 
     @RequestMapping(value = "/{left}/{right}", method = RequestMethod.GET)

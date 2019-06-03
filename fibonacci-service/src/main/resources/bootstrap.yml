@@ -2,7 +2,7 @@
 server:
   port: 8084
 
-addition-service-url: http://localhost:8080
+addition-service-url: http://localhost:8085/add
 
 spring:
   application:
@@ -10,3 +10,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000

@@ -35,7 +35,7 @@ public class MultiplyServiceTest {
 
     @Test
     public void itShouldMultiply2Values() throws Exception {
-        mockMvc.perform(get("/6/6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/multiply/6/6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "36"));
     }
@@ -46,14 +46,14 @@ public class MultiplyServiceTest {
 
     @Test
     public void itShouldMultiplyPositiveWithNegativeValues() throws Exception {
-        mockMvc.perform(get("/6/-6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/multiply/6/-6").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "-36"));
     }
 
     @Test
     public void itShouldMultiplyWithZero() throws Exception {
-        mockMvc.perform(get("/6/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/multiply/6/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "0"));
     }

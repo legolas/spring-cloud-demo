@@ -35,7 +35,7 @@ public class DeductionControllerTest {
 
     @Test
     public void itShouldDeductTwoValues() throws Exception {
-        mockMvc.perform(get("/9/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/deduct/9/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "6"));
     }
@@ -46,7 +46,7 @@ public class DeductionControllerTest {
 
     @Test
     public void itShouldDeductTwoValuesWithOneNegative() throws Exception {
-        mockMvc.perform(get("/9/-3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/deduct/9/-3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "12"));
     }

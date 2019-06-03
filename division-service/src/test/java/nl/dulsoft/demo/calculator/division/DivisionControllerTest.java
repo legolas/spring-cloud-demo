@@ -35,7 +35,7 @@ public class DivisionControllerTest {
 
     @Test
     public void itShouldReturn4For12DividedBy3() throws Exception {
-        mockMvc.perform(get("/12/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/divide/12/3").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(result -> expectToEqual(result, "4"));
     }
@@ -46,7 +46,7 @@ public class DivisionControllerTest {
 
     @Test
     public void itShouldReturnThrowBadRequestForDivisionByZero() throws Exception {
-        mockMvc.perform(get("/12/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        mockMvc.perform(get("/divide/12/0").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isBadRequest());
     }
 }

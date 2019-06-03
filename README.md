@@ -41,7 +41,7 @@ spring:
 ### Steps for the configuration clients
 * Add the following dependencies to the pom for each component:
   * org.springframework.boot:spring-boot-starter-actuator
-  * org.springframework.cloud</groupId:spring-cloud-config-server
+  * org.springframework.cloud:spring-cloud-config-client
 * Rename the `application.properties` to `bootstrap.yml`
 * Add the following to each components `bootstrap.yml`:
 ```
@@ -53,7 +53,21 @@ spring:
       url: <url to the running config server>
 server.port: <component port number>
 ```
-
+* Create another config file named `application.yml`, needed to expose the refresh endpoint, with the content: 
+```
+# Expose the management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+```
+* Add the `@RefreshScope` for each controller with configuration properties that need to change dynamically:
+```
+@RefreshScope
+@RestController
+@RequestMapping(value = "/fibonacci", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+``` 
 ## Phase 3: Add monitoring
 
 See [Spring Boot Admin on github](https://github.com/codecentric/spring-boot-admin)
@@ -61,9 +75,23 @@ and this descriptive tutorial on [Vojtech Ruzicka's Programming Blog](https://ww
 There's also a somewhat outdated instruction written on [Eugen Baeldung](https://www.baeldung.com/spring-boot-admin)'s website.
 
 The Spring Boot Admin Application consists of a server component and a client component.
-First we will setup the server component and add it to calculator suite.
+First we will setup the server component and add it to calculator suite:
+* Create a new Spring Boot project named AdminServer;
+* Open the generated `AdminServerApplication` class and add the annotation `@EnableAdminServer` at class level.
+That's it for the admin server.
 
+Make the following changes on each client that needs to be monitored:
+* Add the dependency to the pom:
+```
+<dependency>
+    <groupId>de.codecentric</groupId>
+    <artifactId>spring-boot-admin-starter-client</artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
+* Define the URL where the admin server is running to the bootstrap.yml `spring.boot.admin.client.url=http://localhost:8080`.
 
+ 
 ## Phase 4: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
 
 ## Phase 5:
