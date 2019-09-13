@@ -113,9 +113,20 @@ Make the following changes:
     public FibonacciController(AdditionServiceProxy additionService) {
         this.additionService = additionService;
     }
-    ...
+    
         int nextValue = additionService.add(val, prev);
 ```
 ## Phase 5: Load balancing the services using [Ribbon](https://spring.io/guides/gs/client-side-load-balancing/)
+
+Ribbon is a client-side load balancer capable of load baalncing over a set of servers using a round-robin algorithm.
+Using spring cloud, Ribbon is configured in a declarative manner.
+
+The first thing to do is to add the following dependency to the `pom.xml`:
+```
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-ribbon</artifactId>
+</dependency>
+```
 
 ## Phase 6:

@@ -3,6 +3,7 @@ server:
   port: 8084
 
 addition-service-url: http://localhost:8085/add
+addition-service.ribbon.listOfServers: localhost:8085, localhost:9085
 
 spring:
   application:

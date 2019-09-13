@@ -70,7 +70,7 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-ribbon</artifactId>
                 <version>${spring-cloud.version}</version>
-<!--                <version>1.4.7.RELEASE</version>-->
+                <!--                <version>1.4.7.RELEASE</version>-->
             </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>

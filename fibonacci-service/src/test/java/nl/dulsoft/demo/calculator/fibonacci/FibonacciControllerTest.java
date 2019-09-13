@@ -46,9 +46,9 @@ public class FibonacciControllerTest {
 
         when(additionServiceProxyMock.add(1, 0)).thenReturn(1);
         when(additionServiceProxyMock.add(1, 1)).thenReturn(2);
-        when(additionServiceProxyMock.add(2,1)).thenReturn(3);
-        when(additionServiceProxyMock.add(3,2)).thenReturn(5);
-        when(additionServiceProxyMock.add(5,3)).thenReturn(8);
+        when(additionServiceProxyMock.add(2, 1)).thenReturn(3);
+        when(additionServiceProxyMock.add(3, 2)).thenReturn(5);
+        when(additionServiceProxyMock.add(5, 3)).thenReturn(8);
     }
 
     @Test
